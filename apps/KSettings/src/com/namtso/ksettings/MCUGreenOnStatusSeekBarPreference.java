@@ -14,7 +14,7 @@ import android.view.View;
 
 import java.io.IOException;
 
-public class MCUGreenONSeekBarPreference extends DialogPreference implements OnSeekBarChangeListener{
+public class MCUGreenOnStatusSeekBarPreference extends DialogPreference implements OnSeekBarChangeListener{
 
     private SeekBar seekBar;
     private TextView textView;
@@ -48,7 +48,7 @@ public class MCUGreenONSeekBarPreference extends DialogPreference implements OnS
         }
     };
 
-    public MCUGreenONSeekBarPreference(Context context, AttributeSet attrs) {
+    public MCUGreenOnStatusSeekBarPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         // TODO Auto-generated constructor stub
     }
