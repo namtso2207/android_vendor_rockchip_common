@@ -18,12 +18,8 @@ public class MCU_LEDs_Off_Status_Preference extends PreferenceActivity implement
     private ListPreference MCU_LEDS_OFF_MODE_Preference;
     private static final String MCU_LEDS_OFF_MODE_KEY = "MCU_LEDS_OFF_MODE_KEY";
 
-    private MCURedOffStatusSeekBarPreference MCURedOffBl_Preference;
-    private static final String MCU_RED_LED_OFF_BL_KEY = "MCU_RED_LED_OFF_BL_KEY";
     private MCUGreenOffStatusSeekBarPreference MCUGreenOffBl_Preference;
     private static final String MCU_GREEN_LED_OFF_BL_KEY = "MCU_GREEN_LED_OFF_BL_KEY";
-    private MCUBlueOffStatusSeekBarPreference MCUBlueOffBl_Preference;
-    private static final String MCU_BLUE_LED_OFF_BL_KEY = "MCU_BLUE_LED_OFF_BL_KEY";
 
     private static final int MSG_UI_BL = 254;
     private static boolean status_flag = true;
@@ -34,26 +30,12 @@ public class MCU_LEDs_Off_Status_Preference extends PreferenceActivity implement
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_UI_BL:
-                    value = SystemProperties.get("persist.sys.mcu_red_off_bl_value");
-                    if(value.equals("")){
-                        value = "255";
-                    }
-                    MCURedOffBl_Preference.setSummary("" + value);
-                    MCURedOffBl_Preference.setEnabled(true);
-
                     value = SystemProperties.get("persist.sys.mcu_green_off_bl_value");
                     if(value.equals("")){
                         value = "0";
                     }
                     MCUGreenOffBl_Preference.setSummary("" + value);
                     MCUGreenOffBl_Preference.setEnabled(true);
-
-                    value = SystemProperties.get("persist.sys.mcu_blue_off_bl_value");
-                    if(value.equals("")){
-                        value = "0";
-                    }
-                    MCUBlueOffBl_Preference.setSummary("" + value);
-                    MCUBlueOffBl_Preference.setEnabled(true);
 
                     break;
                 default:
@@ -72,9 +54,7 @@ public class MCU_LEDs_Off_Status_Preference extends PreferenceActivity implement
 
         MCU_LEDS_OFF_MODE_Preference = (ListPreference) findPreference(MCU_LEDS_OFF_MODE_KEY);
         bindPreferenceSummaryToValue(MCU_LEDS_OFF_MODE_Preference);
-        MCURedOffBl_Preference = (MCURedOffStatusSeekBarPreference) findPreference(MCU_RED_LED_OFF_BL_KEY);
         MCUGreenOffBl_Preference = (MCUGreenOffStatusSeekBarPreference) findPreference(MCU_GREEN_LED_OFF_BL_KEY);
-        MCUBlueOffBl_Preference = (MCUBlueOffStatusSeekBarPreference) findPreference(MCU_BLUE_LED_OFF_BL_KEY);
     }
 
     @Override

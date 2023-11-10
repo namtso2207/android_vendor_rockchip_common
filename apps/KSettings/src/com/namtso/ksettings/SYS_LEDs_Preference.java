@@ -15,11 +15,11 @@ public class SYS_LEDs_Preference extends PreferenceActivity implements Preferenc
 	
     private ListPreference LED_Red_Preference;
     private ListPreference LED_Green_Preference;
-    private ListPreference LED_Blue_Preference;
+/*     private ListPreference LED_Blue_Preference; */
 
     private static final String Red_LED_KEY = "Red_LED_KEY";
     private static final String Green_LED_KEY = "Green_LED_KEY";
-    private static final String Blue_LED_KEY = "Blue_LED_KEY";
+/*     private static final String Blue_LED_KEY = "Blue_LED_KEY"; */
 
 
     @Override
@@ -34,8 +34,8 @@ public class SYS_LEDs_Preference extends PreferenceActivity implements Preferenc
         bindPreferenceSummaryToValue(LED_Red_Preference);
         LED_Green_Preference = (ListPreference) findPreference(Green_LED_KEY);
         bindPreferenceSummaryToValue(LED_Green_Preference);		
-        LED_Blue_Preference = (ListPreference) findPreference(Blue_LED_KEY);
-        bindPreferenceSummaryToValue(LED_Blue_Preference);
+/*         LED_Blue_Preference = (ListPreference) findPreference(Blue_LED_KEY);
+        bindPreferenceSummaryToValue(LED_Blue_Preference); */
 
     }
 
@@ -59,40 +59,40 @@ public class SYS_LEDs_Preference extends PreferenceActivity implements Preferenc
                 int index = listPreference.findIndexOfValue(stringValue);
                 // Set the summary to reflect the new value.
                 preference.setSummary(index >= 0 ? listPreference.getEntries()[index] : null);
-
+Log.d("hlm","sBindPreferenceSummaryToValueListener");
                 if (Red_LED_KEY.equals(key)){
-                    //Log.d("wjh","1===" + index);
+                    Log.d("hlm","1===" + index);
                     switch(index){
                         case 0:
                             try {
-                                ComApi.execCommand(new String[]{"sh", "-c", "echo off > /sys/class/leds/red_led/trigger"});
+                                ComApi.execCommand(new String[]{"sh", "-c", "echo off > /sys/class/leds/white_led/trigger"});
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                             break;
                         case 1:
                             try {
-                                ComApi.execCommand(new String[]{"sh", "-c", "echo default-on > /sys/class/leds/red_led/trigger"});
+                                ComApi.execCommand(new String[]{"sh", "-c", "echo default-on > /sys/class/leds/white_led/trigger"});
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                             break;
                         case 2:
                             try {
-                                ComApi.execCommand(new String[]{"sh", "-c", "echo timer > /sys/class/leds/red_led/trigger"});
+                                ComApi.execCommand(new String[]{"sh", "-c", "echo timer > /sys/class/leds/white_led/trigger"});
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                             break;
                         case 3:
                             try {
-                                ComApi.execCommand(new String[]{"sh", "-c", "echo heartbeat > /sys/class/leds/red_led/trigger"});
+                                ComApi.execCommand(new String[]{"sh", "-c", "echo heartbeat > /sys/class/leds/white_led/trigger"});
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                             break;
                     }
-                    SystemProperties.set("persist.sys.Red_led_control", "" + index);
+                    SystemProperties.set("persist.sys.white_led_control", "" + index);
 
                 }
                 else if (Green_LED_KEY.equals(key)){
@@ -100,36 +100,36 @@ public class SYS_LEDs_Preference extends PreferenceActivity implements Preferenc
                     switch(index){
                         case 0:
                             try {
-                                ComApi.execCommand(new String[]{"sh", "-c", "echo off > /sys/class/leds/green_led/trigger"});
+                                ComApi.execCommand(new String[]{"sh", "-c", "echo off > /sys/class/leds/ext_led/trigger"});
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                             break;
                         case 1:
                             try {
-                                ComApi.execCommand(new String[]{"sh", "-c", "echo default-on > /sys/class/leds/green_led/trigger"});
+                                ComApi.execCommand(new String[]{"sh", "-c", "echo default-on > /sys/class/leds/ext_led/trigger"});
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                             break;
                         case 2:
                             try {
-                                ComApi.execCommand(new String[]{"sh", "-c", "echo timer > /sys/class/leds/green_led/trigger"});
+                                ComApi.execCommand(new String[]{"sh", "-c", "echo timer > /sys/class/leds/ext_led/trigger"});
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                             break;
                         case 3:
                             try {
-                                ComApi.execCommand(new String[]{"sh", "-c", "echo heartbeat > /sys/class/leds/green_led/trigger"});
+                                ComApi.execCommand(new String[]{"sh", "-c", "echo heartbeat > /sys/class/leds/ext_led/trigger"});
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                             break;
                     }
-                    SystemProperties.set("persist.sys.Green_led_control", "" + index);
+                    SystemProperties.set("persist.sys.ext_led_control", "" + index);
 
-                }else if(Blue_LED_KEY.equals(key)){
+                }/* else if(Blue_LED_KEY.equals(key)){
                     //Log.d("wjh","1===" + index);
                     switch(index){
                         case 0:
@@ -163,7 +163,7 @@ public class SYS_LEDs_Preference extends PreferenceActivity implements Preferenc
                     }
                     SystemProperties.set("persist.sys.Blue_led_control", "" + index);
 
-                }
+                } */
             }  else {
                 // For all other preferences, set the summary to the value's
                 // simple string representation.

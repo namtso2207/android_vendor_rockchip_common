@@ -13,23 +13,11 @@
 		android:entryValues="@array/MCU_LEDs_array_value">
 	</ListPreference>
 
-	<com.namtso.ksettings.MCURedOffStatusSeekBarPreference
-        android:dialogTitle="@string/MCU_RED_LED_OFF_Brightness_title"
-        android:title="@string/MCU_RED_LED_OFF_Brightness_title"
-        android:summary="255"
-        android:key="MCU_RED_LED_OFF_BL_KEY"
-        android:dialogLayout="@layout/brightness_prefs" />
 	<com.namtso.ksettings.MCUGreenOffStatusSeekBarPreference
         android:dialogTitle="@string/MCU_GRREN_LED_OFF_Brightness_title"
         android:title="@string/MCU_GRREN_LED_OFF_Brightness_title"
         android:summary="0"
         android:key="MCU_GREEN_LED_OFF_BL_KEY"
-        android:dialogLayout="@layout/brightness_prefs" />
-	<com.namtso.ksettings.MCUBlueOffStatusSeekBarPreference
-        android:dialogTitle="@string/MCU_BLUE_LED_OFF_Brightness_title"
-        android:title="@string/MCU_BLUE_LED_OFF_Brightness_title"
-        android:summary="0"
-        android:key="MCU_BLUE_LED_OFF_BL_KEY"
         android:dialogLayout="@layout/brightness_prefs" />
 
 

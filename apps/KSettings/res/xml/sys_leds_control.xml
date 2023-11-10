@@ -21,14 +21,4 @@
         android:entries="@array/Green_LEDs_array"
         android:entryValues="@array/Green_LEDs_array_value">
     </ListPreference>
-	
-    <ListPreference
-        android:key="Blue_LED_KEY"
-        android:title="@string/LED_blue"
-        android:summary="@string/LED_blue_default"
-        android:defaultValue="4"
-        android:dialogTitle="@string/LED_blue"
-        android:entries="@array/Blue_LEDs_array"
-        android:entryValues="@array/Blue_LEDs_array_value">
-    </ListPreference>
 </PreferenceScreen>

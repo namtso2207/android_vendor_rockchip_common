@@ -92,12 +92,12 @@ public class BootReceiver extends BroadcastReceiver {
 		}
 		Log.e(TAG, "hlm mcu_leds_on_modes_value val " + val);
 		try {
-			ComApi.execCommand(new String[]{"sh", "-c", "echo 0x230" + value + " > /sys/class/mcu/mculed"});
+			ComApi.execCommand(new String[]{"sh", "-c", "echo 0x2a0" + value + " > /sys/class/mcu/mculed"});
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		value = SystemProperties.get("persist.sys.mcu_red_on_bl_value");
+/* 		value = SystemProperties.get("persist.sys.mcu_red_on_bl_value");
 		if (value.equals("")) {
 			value = "255";
 		}
@@ -193,9 +193,9 @@ public class BootReceiver extends BroadcastReceiver {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} */
 		//sys led
-		value = SystemProperties.get("persist.sys.Red_led_control");
+		value = SystemProperties.get("persist.sys.white_led_control");
 		if (value.equals("")) {
 			value = "3";
 		}
@@ -203,35 +203,35 @@ public class BootReceiver extends BroadcastReceiver {
 		switch (val) {
 			case 0:
 				try {
-					ComApi.execCommand(new String[]{"sh", "-c", "echo off > /sys/class/leds/red_led/trigger"});
+					ComApi.execCommand(new String[]{"sh", "-c", "echo off > /sys/class/leds/white_led/trigger"});
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 			case 1:
 				try {
-					ComApi.execCommand(new String[]{"sh", "-c", "echo default-on > /sys/class/leds/red_led/trigger"});
+					ComApi.execCommand(new String[]{"sh", "-c", "echo default-on > /sys/class/leds/white_led/trigger"});
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 			case 2:
 				try {
-					ComApi.execCommand(new String[]{"sh", "-c", "echo timer > /sys/class/leds/red_led/trigger"});
+					ComApi.execCommand(new String[]{"sh", "-c", "echo timer > /sys/class/leds/white_led/trigger"});
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 			case 3:
 				try {
-					ComApi.execCommand(new String[]{"sh", "-c", "echo heartbeat > /sys/class/leds/red_led/trigger"});
+					ComApi.execCommand(new String[]{"sh", "-c", "echo heartbeat > /sys/class/leds/white_led/trigger"});
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 		}
 
-		value = SystemProperties.get("persist.sys.Green_led_control");
+		value = SystemProperties.get("persist.sys.ext_led_control");
 		if (value.equals("")) {
 			value = "3";
 		}
@@ -239,28 +239,28 @@ public class BootReceiver extends BroadcastReceiver {
 		switch (val) {
 			case 0:
 				try {
-					ComApi.execCommand(new String[]{"sh", "-c", "echo off > /sys/class/leds/green_led/trigger"});
+					ComApi.execCommand(new String[]{"sh", "-c", "echo off > /sys/class/leds/ext_led/trigger"});
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 			case 1:
 				try {
-					ComApi.execCommand(new String[]{"sh", "-c", "echo default-on > /sys/class/leds/green_led/trigger"});
+					ComApi.execCommand(new String[]{"sh", "-c", "echo default-on > /sys/class/leds/ext_led/trigger"});
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 			case 2:
 				try {
-					ComApi.execCommand(new String[]{"sh", "-c", "echo timer > /sys/class/leds/green_led/trigger"});
+					ComApi.execCommand(new String[]{"sh", "-c", "echo timer > /sys/class/leds/ext_led/trigger"});
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				break;
 			case 3:
 				try {
-					ComApi.execCommand(new String[]{"sh", "-c", "echo heartbeat > /sys/class/leds/green_led/trigger"});
+					ComApi.execCommand(new String[]{"sh", "-c", "echo heartbeat > /sys/class/leds/ext_led/trigger"});
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

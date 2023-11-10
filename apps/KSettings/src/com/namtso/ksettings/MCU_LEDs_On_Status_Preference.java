@@ -17,28 +17,18 @@ public class MCU_LEDs_On_Status_Preference extends PreferenceActivity implements
 	private ListPreference MCU_LEDS_ON_MODE_Preference;
 	private static final String MCU_LEDS_ON_MODE_KEY = "MCU_LEDS_ON_MODE_KEY";
 
-    private MCURedOnStatusSeekBarPreference MCURedOnBl_Preference;
-    private static final String MCU_RED_LED_ON_BL_KEY = "MCU_RED_LED_ON_BL_KEY";
-    private MCUGreenOnStatusSeekBarPreference MCUGreenOnBl_Preference;
-    private static final String MCU_GREEN_LED_ON_BL_KEY = "MCU_GREEN_LED_ON_BL_KEY";
-    private MCUBlueOnStatusSeekBarPreference MCUBlueOnBl_Preference;
-    private static final String MCU_BLUE_LED_ON_BL_KEY = "MCU_BLUE_LED_ON_BL_KEY";
+    //private MCUGreenOnStatusSeekBarPreference MCUGreenOnBl_Preference;
+    //private static final String MCU_GREEN_LED_ON_BL_KEY = "MCU_GREEN_LED_ON_BL_KEY";
 
     private static final int MSG_UI_BL = 255;
     private static boolean status_flag = true;
     private String value;
 
-    private Handler uiHandler = new Handler() {
+/*     private Handler uiHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_UI_BL:
-                    value = SystemProperties.get("persist.sys.mcu_red_on_bl_value");
-                    if(value.equals("")){
-                        value = "255";
-                    }
-                    MCURedOnBl_Preference.setSummary("" + value);
-                    MCURedOnBl_Preference.setEnabled(true);
 
                     value = SystemProperties.get("persist.sys.mcu_green_on_bl_value");
                     if(value.equals("")){
@@ -47,19 +37,12 @@ public class MCU_LEDs_On_Status_Preference extends PreferenceActivity implements
                     MCUGreenOnBl_Preference.setSummary("" + value);
                     MCUGreenOnBl_Preference.setEnabled(true);
 
-                    value = SystemProperties.get("persist.sys.mcu_blue_on_bl_value");
-                    if(value.equals("")){
-                        value = "255";
-                    }
-                    MCUBlueOnBl_Preference.setSummary("" + value);
-                    MCUBlueOnBl_Preference.setEnabled(true);
-
                     break;
                 default:
                     break;
             }
         }
-    };
+    }; */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,15 +55,13 @@ public class MCU_LEDs_On_Status_Preference extends PreferenceActivity implements
 		MCU_LEDS_ON_MODE_Preference = (ListPreference) findPreference(MCU_LEDS_ON_MODE_KEY);
         bindPreferenceSummaryToValue(MCU_LEDS_ON_MODE_Preference);
 
-        MCURedOnBl_Preference = (MCURedOnStatusSeekBarPreference) findPreference(MCU_RED_LED_ON_BL_KEY);
-        MCUGreenOnBl_Preference = (MCUGreenOnStatusSeekBarPreference) findPreference(MCU_GREEN_LED_ON_BL_KEY);
-		MCUBlueOnBl_Preference = (MCUBlueOnStatusSeekBarPreference) findPreference(MCU_BLUE_LED_ON_BL_KEY);
+        //MCUGreenOnBl_Preference = (MCUGreenOnStatusSeekBarPreference) findPreference(MCU_GREEN_LED_ON_BL_KEY);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        status_flag = true;
+/*         status_flag = true;
         new Thread (new Runnable() {
             @Override
             public void run() {
@@ -98,7 +79,7 @@ public class MCU_LEDs_On_Status_Preference extends PreferenceActivity implements
                     }
                 }
             }
-        }).start();
+        }).start(); */
 
     }
 
@@ -131,7 +112,7 @@ public class MCU_LEDs_On_Status_Preference extends PreferenceActivity implements
                     val = Integer.toHexString(index);
                     if(index<=15 && index >=0) {
                         try {
-                            ComApi.execCommand(new String[]{"sh", "-c", "echo 0x230"+ val +" > /sys/class/mcu/mculed"});
+                            ComApi.execCommand(new String[]{"sh", "-c", "echo 0x2a0"+ val +" > /sys/class/mcu/mculed"});
                             SystemProperties.set("persist.sys.mcu_leds_on_modes_value", val);
                         } catch (IOException e) {
                             e.printStackTrace();
