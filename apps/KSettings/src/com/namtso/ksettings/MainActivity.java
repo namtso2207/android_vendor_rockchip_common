@@ -17,10 +17,13 @@ public class MainActivity extends PreferenceActivity implements Preference.OnPre
 
     private ListPreference FAN_Preference;
     private SwitchPreference WOL_Preference;
+    private SwitchPreference EXT_WOL_Preference;
 
     private Context mContext;
 
     private static final String FAN_KEY = "FAN_KEY";
+    private static final String WOL_KEY = "WOL_KEY";
+    private static final String EXT_WOL_KEY = "EXT_WOL_KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,33 @@ public class MainActivity extends PreferenceActivity implements Preference.OnPre
 
         FAN_Preference = (ListPreference) findPreference(FAN_KEY);
         bindPreferenceSummaryToValue(FAN_Preference);
+        WOL_Preference = (SwitchPreference)findPreference(WOL_KEY);
+        //WOL_Preference.setChecked(true);
+        WOL_Preference.setOnPreferenceClickListener(this);
+        try {
+            String ret = ComApi.execCommand(new String[]{"sh", "-c", "cat /sys/class/wol/eth0_enable"});
+            if(ret.equals("1")){
+                WOL_Preference.setChecked(true);
+            }else{
+                WOL_Preference.setChecked(false);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        EXT_WOL_Preference = (SwitchPreference)findPreference(EXT_WOL_KEY);
+        //EXT_WOL_Preference.setChecked(true);
+        EXT_WOL_Preference.setOnPreferenceClickListener(this);
+        try {
+            String ret = ComApi.execCommand(new String[]{"sh", "-c", "cat /sys/class/wol/eth1_enable"});
+            if(ret.equals("1")){
+                EXT_WOL_Preference.setChecked(true);
+            }else{
+                EXT_WOL_Preference.setChecked(false);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -147,6 +177,39 @@ public class MainActivity extends PreferenceActivity implements Preference.OnPre
     @Override
     public boolean onPreferenceClick(Preference preference) {
         final String key = preference.getKey();
+        if (WOL_KEY.equals(key)){
+            if (WOL_Preference.isChecked()) {
+                //Toast.makeText(this,"true",Toast.LENGTH_SHORT).show();
+                try {
+                    ComApi.execCommand(new String[]{"sh", "-c", "echo 1 > /sys/class/wol/eth0_enable"});
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                //Toast.makeText(this,"false",Toast.LENGTH_SHORT).show();
+                try {
+                    ComApi.execCommand(new String[]{"sh", "-c", "echo 0 > /sys/class/wol/eth0_enable"});
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else if (EXT_WOL_KEY.equals(key)){
+            if (EXT_WOL_Preference.isChecked()) {
+                //Toast.makeText(this,"true",Toast.LENGTH_SHORT).show();
+                try {
+                    ComApi.execCommand(new String[]{"sh", "-c", "echo 1 > /sys/class/wol/eth1_enable"});
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                //Toast.makeText(this,"false",Toast.LENGTH_SHORT).show();
+                try {
+                    ComApi.execCommand(new String[]{"sh", "-c", "echo 0 > /sys/class/wol/eth1_enable"});
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+			}
+        }
         return true;
     }
 }

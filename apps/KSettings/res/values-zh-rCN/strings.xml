@@ -8,7 +8,8 @@
     <string name="FunctionKey">功能按键定义</string>
     <string name="LEDs">LED灯控制</string>
     <string name="Cooling_fan">风扇控制</string>
-    <string name="WOL">WOL</string>
+    <string name="WOL">WOL1</string>
+    <string name="EXT_WOL">WOL2</string>
     <string name="Status_bar_control">状态栏控制</string>
     <string name="Logo_LED_control">Logo LED灯控制</string>
     <string name="Timer">定时器</string>
@@ -18,7 +19,8 @@
 
     <string name="Gsensor">重力传感器数据</string>
 
-    <string name="WOL_summary">网络唤醒</string>
+    <string name="WOL_summary">网络1唤醒</string>
+    <string name="EXT_WOL_summary">网络2唤醒</string>
 
     <string name="Hotspot_summary">WLAN/RSDB</string>
 

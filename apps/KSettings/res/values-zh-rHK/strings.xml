@@ -8,7 +8,8 @@
     <string name="FunctionKey">功能按鍵定義</string>
     <string name="LEDs">LED燈控制</string>
     <string name="Cooling_fan">風扇控制</string>
-    <string name="WOL">WOL</string>
+    <string name="WOL">WOL1</string>
+    <string name="EXT_WOL">WOL2</string>
     <string name="Status_bar_control">狀態列控制</string>
     <string name="Logo_LED_control">Logo LED燈控制</string>
     <string name="Timer">計时器</string>
@@ -17,7 +18,8 @@
     <string name="USB_PCIE_default">USB-3.0 Mode</string>
     <string name="Gsensor">重力感測器數據</string>
 
-    <string name="WOL_summary">網路喚醒</string>
+    <string name="WOL_summary">網路1喚醒</string>
+    <string name="EXT_WOL_summary">網路2喚醒</string>
 
     <string name="Hotspot_summary">WLAN/RSDB</string>
 

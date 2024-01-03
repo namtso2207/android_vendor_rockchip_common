@@ -12,7 +12,8 @@
     <string name="MCU_System_ON_Status" translatable="false">MCU LEDs System On control</string>
     <string name="MCU_System_OFF_Status" translatable="false">MCU LEDs System Shutdown control</string>
     <string name="Cooling_fan">Cooling fan</string>
-    <string name="WOL">WOL</string>
+    <string name="WOL">WOL1</string>
+    <string name="EXT_WOL">WOL2</string>
     <string name="Status_bar_control">Status bar control</string>
     <string name="Logo_LED_control">Logo LED control</string>
     <string name="Timer">Timer</string>
@@ -24,7 +25,8 @@
     <string name="Updater" translatable="false">Updater</string>
 
 
-    <string name="WOL_summary">Wake on LAN</string>
+    <string name="WOL_summary">Wake on LAN1</string>
+    <string name="EXT_WOL_summary">Wake on LAN2</string>
 
     <string name="Hotspot_summary">WLAN/RSDB</string>
 
