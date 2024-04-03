@@ -104,9 +104,9 @@
         <item>2</item>
     </string-array>
 
-    <string name="LED_red" translatable="false">Sys White LED</string>
-    <string name="LED_green" translatable="false">Sys Ext LED</string>
-    <string name="LED_blue" translatable="false">Sys Blue LED</string>
+    <string name="LED_red" translatable="false">SYS White LED</string>
+    <string name="LED_green" translatable="false">SYS Ext LED</string>
+    <string name="LED_blue" translatable="false">SYS Blue LED</string>
 
     <string name="LED_red_default" translatable="false">Heartbeat mode</string>
     <string name="LED_green_default" translatable="false">Heartbeat mode</string>
