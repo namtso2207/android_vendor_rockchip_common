@@ -182,7 +182,7 @@ public class WriteMacActivity extends Activity {
 				ShowMac_USB();
 				ShowMac_PCIE();
 			} else {
-				ShowMac_OTP();
+				ShowMac_OTP(strMac);
 			}
         } else {
             ShowMac();
@@ -210,7 +210,7 @@ public class WriteMacActivity extends Activity {
         Log.e(TAG, "strSn : " + strSn);
 
         WriteSn(strSn);
-        ShowSn();
+        ShowSn(strSn);
 
         m_EditMac.setText("");
         m_EditMac.requestFocus();
@@ -358,7 +358,7 @@ public class WriteMacActivity extends Activity {
 							Log.d(TAG, "hlm Write_UsbMac_ok_flag:" + Write_UsbMac_ok_flag);
 						} else {
 							Tools.writeFile(Tools.Key_OTP_Mac, mac);
-							WriteMac_ok_flag = true;
+							//WriteMac_ok_flag = true;
 						}
 					}
 				}
@@ -412,7 +412,7 @@ public class WriteMacActivity extends Activity {
 						Log.d(TAG, "hlm Write_PcieMac_ok_flag:" + Write_PcieMac_ok_flag);
 					} else {
 						Tools.writeFile(Tools.Key_OTP_Mac, mac);
-						WriteMac_ok_flag = true;
+						//WriteMac_ok_flag = true;
 					}
 				}
 			}
@@ -466,7 +466,7 @@ public class WriteMacActivity extends Activity {
 			Log.d(TAG,"SN ="+ strSn + " format_err= "+format_err);
 			if (!format_err) {
 				Tools.writeFile(Tools.Key_OTP_Sn, strSn);	
-				WriteSn_ok_flag = true;
+				//WriteSn_ok_flag = true;
 
 			}
 		}
@@ -513,8 +513,8 @@ public class WriteMacActivity extends Activity {
 
 				strTmpMac += strMac.substring(i, (i + 2) < length ? (i + 2) :  length );
 				if( (i + 2) < length) strTmpMac += ':';
-				}
-				m_MacAddr.setText(strTmpMac);
+			}
+			m_MacAddr.setText(strTmpMac);
 		}
 	}
 	
@@ -524,6 +524,39 @@ public class WriteMacActivity extends Activity {
 		
 		Log.e(TAG, "strSn : " + strSn);
 		m_SnAddr.setText(strSn);
+	}
+
+	public void ShowMac_OTP(String value)
+	{
+		String strTmpMac = "";
+		String strMac = Tools.readFile(Tools.Key_OTP_Mac);
+		Log.e(TAG, "strMac : " + strMac  + ";  length    : " + strMac.length() );
+
+		int length = strMac.length();
+		if (length != 12) {
+			m_MacAddr.setTextColor(Color.RED);
+			m_MacAddr.setText("ERR");
+
+		} else {
+			for(int i = 0; i < length; i += 2) {
+
+				strTmpMac += strMac.substring(i, (i + 2) < length ? (i + 2) :  length );
+				if( (i + 2) < length) strTmpMac += ':';
+			}
+			m_MacAddr.setText(strTmpMac);
+			WriteMac_ok_flag = value.contains(strTmpMac);
+			Log.e(TAG, "strMac: " + strMac  + "; value: " + value + "; WriteMac_ok_flag : " + WriteMac_ok_flag);
+		}
+	}
+
+	public void ShowSn(String value)
+	{
+		String strSn =  Tools.readFile(Tools.Key_OTP_Sn);
+
+		Log.e(TAG, "strSn : " + strSn);
+		m_SnAddr.setText(strSn);
+		WriteSn_ok_flag = value.contains(strSn);
+		Log.e(TAG, "WriteSn_ok_flag : " + WriteSn_ok_flag);
 	}
 
 	public void ShowUsid()
