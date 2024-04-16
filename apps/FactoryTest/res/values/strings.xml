@@ -5,7 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="FactoryTest">Factory Test</string>
     <string name="LongTest">Long Test</string>
-    <string name="WriteMac">烧录MAC和SN地址</string>
+    <string name="WriteMac">烧录MAC或SN地址</string>
     <string name="Mipi_Camera">MIPI Camera</string>
     <string name="HandWriteMac">Hand Write Mac</string>
     <string name="FactoryReset">Factory Reset</string>

@@ -1062,7 +1062,9 @@ private void ShowMessage(String sMsg)
 		}
 		cmd_val = "screencap -p " + path + strSn + ".png";
 		Log.e(TAG, "screencap cmd_val : " + cmd_val);
-		Tools.exec(cmd_val);
+		if(Tools.exec(cmd_val).contains("")){
+			m_Button_reset_MCU.setTextColor(Color.GREEN);
+		}
     }
 
     public void Write_mac_usid(View view) {
@@ -2007,6 +2009,7 @@ private void ShowMessage(String sMsg)
 					}
                     m_TextView_UART.setText(strTxt);
                     m_TextView_UART.setTextColor(0xFF55FF55);
+					Log.d(TAG, "MSG_UART_TEST_OK");
                 }
                 break;
 
