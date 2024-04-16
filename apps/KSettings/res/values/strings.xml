@@ -25,8 +25,10 @@
     <string name="Updater" translatable="false">Updater</string>
 
 
-    <string name="WOL_summary">Wake on LAN1</string>
-    <string name="EXT_WOL_summary">Wake on LAN2</string>
+    <string name="WOL_ON_summary">Wake on LAN1</string>
+    <string name="EXT_WOL_ON_summary">Wake on LAN2</string>
+    <string name="WOL_OFF_summary">Wake off LAN1</string>
+    <string name="EXT_WOL_OFF_summary">Wake off LAN2</string>
 
     <string name="Hotspot_summary">WLAN/RSDB</string>
 

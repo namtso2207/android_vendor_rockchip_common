@@ -32,14 +32,14 @@
         android:key="WOL_KEY"
         android:iconSpaceReserved="false"
         android:title="@string/WOL"
-        android:summary="@string/WOL_summary"/>
+		android:summaryOn="@string/WOL_ON_summary"
+        android:summaryOff="@string/WOL_OFF_summary"/>
     <SwitchPreference
         android:key="EXT_WOL_KEY"
         android:iconSpaceReserved="false"
         android:title="@string/EXT_WOL"
-        android:summary="@string/EXT_WOL_summary"/>
-
-
+		android:summaryOn="@string/EXT_WOL_ON_summary"
+        android:summaryOff="@string/EXT_WOL_OFF_summary"/>
     <PreferenceScreen
         android:title="@string/Status_bar_control"
         android:iconSpaceReserved="false">

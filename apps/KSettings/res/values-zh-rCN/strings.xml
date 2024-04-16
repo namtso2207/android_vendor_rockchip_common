@@ -19,8 +19,10 @@
 
     <string name="Gsensor">重力传感器数据</string>
 
-    <string name="WOL_summary">网络1唤醒</string>
-    <string name="EXT_WOL_summary">网络2唤醒</string>
+    <string name="WOL_ON_summary">打开网络1唤醒</string>
+    <string name="EXT_WOL_ON_summary">打开网络2唤醒</string>
+    <string name="WOL_OFF_summary">关闭网络1唤醒</string>
+    <string name="EXT_WOL_OFF_summary">关闭网络2唤醒</string>
 
     <string name="Hotspot_summary">WLAN/RSDB</string>
 

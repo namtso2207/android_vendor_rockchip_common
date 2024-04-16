@@ -56,7 +56,10 @@ public class MainActivity extends PreferenceActivity implements Preference.OnPre
             String ret = ComApi.execCommand(new String[]{"sh", "-c", "cat /sys/class/wol/eth1_enable"});
             if(ret.equals("1")){
                 EXT_WOL_Preference.setChecked(true);
-            }else{
+            }else if(ret.equals("2")){
+				//EXT_WOL_Preference.setEnabled(false); 
+				preferenceScreen.removePreference(EXT_WOL_Preference);
+            }else {
                 EXT_WOL_Preference.setChecked(false);
             }
         } catch (IOException e) {

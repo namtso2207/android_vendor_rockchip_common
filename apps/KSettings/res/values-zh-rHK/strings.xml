@@ -18,8 +18,10 @@
     <string name="USB_PCIE_default">USB-3.0 Mode</string>
     <string name="Gsensor">重力感測器數據</string>
 
-    <string name="WOL_summary">網路1喚醒</string>
-    <string name="EXT_WOL_summary">網路2喚醒</string>
+    <string name="WOL_ON_summary">打開網路1喚醒</string>
+    <string name="EXT_WOL_ON_summary">打開網路2喚醒</string>
+    <string name="WOL_OFF_summary">關閉網路1喚醒</string>
+    <string name="EXT_WOL_OFF_summary">關閉網路2喚醒</string>
 
     <string name="Hotspot_summary">WLAN/RSDB</string>
 
