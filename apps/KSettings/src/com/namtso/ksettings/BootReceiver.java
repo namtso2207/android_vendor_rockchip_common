@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.SystemProperties;
 import android.provider.Settings;
 import android.util.Log;
+import java.io.File;
 
 import java.io.IOException;
 
@@ -26,6 +27,45 @@ public class BootReceiver extends BroadcastReceiver {
 			Settings.System.putInt(context.getContentResolver(),"user_rotation", SystemProperties.getInt("persist.sys.user_rotation",0));
 			fan_control();
 			led_control();
+			cam_ir_cut_control();
+		}
+	}
+
+	private void cam_ir_cut_control() {
+        File file = new File("/sys/bus/i2c/drivers/os08a10/2-0036");
+        if (file.exists()){
+			if(1 == SystemProperties.getInt("persist.sys.cam1", 0)){
+				MainActivity.su_exec("echo 40 > /sys/class/gpio/export;echo out > sys/class/gpio/gpio40/direction;echo 0 > sys/class/gpio/gpio40/value");
+			}else{
+				MainActivity.su_exec("echo 40 > /sys/class/gpio/export;echo out > sys/class/gpio/gpio40/direction;echo 1 > sys/class/gpio/gpio40/value");
+			}
+		}
+
+		file = new File("/sys/bus/i2c/drivers/os08a10/3-0036");
+        if (file.exists()){
+			if(1 == SystemProperties.getInt("persist.sys.cam2", 0)){
+				MainActivity.su_exec("echo 39 > /sys/class/gpio/export;echo out > sys/class/gpio/gpio39/direction;echo 0 > sys/class/gpio/gpio39/value");
+			}else{
+				MainActivity.su_exec("echo 39 > /sys/class/gpio/export;echo out > sys/class/gpio/gpio39/direction;echo 1 > sys/class/gpio/gpio39/value");
+			}
+		}
+
+		file = new File("/sys/bus/i2c/drivers/os08a10/4-0036");
+        if (file.exists()){
+			if(1 == SystemProperties.getInt("persist.sys.cam3", 0)){
+				MainActivity.su_exec("echo 43 > /sys/class/gpio/export;echo out > sys/class/gpio/gpio43/direction;echo 0 > sys/class/gpio/gpio43/value");
+			}else{
+				MainActivity.su_exec("echo 43 > /sys/class/gpio/export;echo out > sys/class/gpio/gpio43/direction;echo 1 > sys/class/gpio/gpio43/value");
+			}
+		}
+
+		file = new File("/sys/bus/i2c/drivers/os08a10/6-0036");
+        if (file.exists()){
+			if(1 == SystemProperties.getInt("persist.sys.cam4", 0)){
+				MainActivity.su_exec("echo 45 > /sys/class/gpio/export;echo out > sys/class/gpio/gpio45/direction;echo 0 > sys/class/gpio/gpio45/value");
+			}else{
+				MainActivity.su_exec("echo 45 > /sys/class/gpio/export;echo out > sys/class/gpio/gpio45/direction;echo 1 > sys/class/gpio/gpio45/value");
+			}
 		}
 	}
 
