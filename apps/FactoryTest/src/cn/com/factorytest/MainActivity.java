@@ -1258,7 +1258,7 @@ private void ShowMessage(String sMsg)
 		if(sata_test){
 	        String rec = Tools.exec("ls /dev/block/sd*");
 			Log.d(TAG, "hlm test_SATA:" + rec);
-	        if (rec.contains("sda")) {
+	        if (rec.contains("sdb")) {
 				mHandler.sendEmptyMessage(MSG_SATA_TEST_OK);
 			}else{
 	            mHandler.sendEmptyMessage(MSG_SATA_TEST_ERROR);
