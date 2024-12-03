@@ -31,9 +31,21 @@ public class SYS_LEDs_Preference extends PreferenceActivity implements Preferenc
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         LED_Red_Preference = (ListPreference) findPreference(Red_LED_KEY);
-        bindPreferenceSummaryToValue(LED_Red_Preference);
+        LED_Red_Preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
+        //bindPreferenceSummaryToValue(LED_Red_Preference);
+        int redLedCtl = SystemProperties.getInt("persist.sys.white_led_control", 3);
+        String[] redLedArray = getResources().getStringArray(R.array.Red_LEDs_array);
+        LED_Red_Preference.setValueIndex(redLedCtl);
+        LED_Red_Preference.setSummary(redLedArray[redLedCtl]);
+
         LED_Green_Preference = (ListPreference) findPreference(Green_LED_KEY);
-        bindPreferenceSummaryToValue(LED_Green_Preference);		
+        LED_Green_Preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
+       // bindPreferenceSummaryToValue(LED_Green_Preference);
+        int greenLedCtl = SystemProperties.getInt("persist.sys.ext_led_control", 3);
+        String[] greenLedArray = getResources().getStringArray(R.array.Green_LEDs_array);
+        LED_Green_Preference.setValueIndex(greenLedCtl);
+        LED_Green_Preference.setSummary(greenLedArray[greenLedCtl]);
+
 /*         LED_Blue_Preference = (ListPreference) findPreference(Blue_LED_KEY);
         bindPreferenceSummaryToValue(LED_Blue_Preference); */
 

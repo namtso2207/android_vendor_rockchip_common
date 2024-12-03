@@ -21,7 +21,6 @@
         android:key="FAN_KEY"
         android:iconSpaceReserved="false"
         android:title="@string/Cooling_fan"
-        android:summary="@string/FAN_default"
         android:defaultValue="1"
         android:dialogTitle="@string/Cooling_fan"
         android:entries="@array/FAN_array"
@@ -46,6 +45,15 @@
         android:title="@string/CAM1_IR_CUT"
 		android:summaryOn="@string/CAM_IR_CUT_ON_summary"
         android:summaryOff="@string/CAM_IR_CUT_OFF_summary"/>
+
+    <PreferenceScreen
+        android:title="@string/camera_settings"
+        android:iconSpaceReserved="false">
+        <intent
+            android:targetClass="com.namtso.ksettings.CameraPreference"
+            android:targetPackage="com.namtso.ksettings" />
+    </PreferenceScreen>
+
     <SwitchPreference
         android:key="CAM2_IR_CUT_KEY"
         android:iconSpaceReserved="false"
